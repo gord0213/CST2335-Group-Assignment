@@ -1,0 +1,23 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.mike.cst2335_group_assignment.HomeScreen">
+    <item android:id="@+id/actionHome"
+        android:title="Home"
+        android:icon="@drawable/star"
+        android:orderInCategory="101"
+        app:showAsAction="always" />
+    <item android:id="@+id/actionLivingRoom"
+        android:title="Home"
+        android:icon="@drawable/couch"
+        android:orderInCategory="200"
+        app:showAsAction="always" />
+    <item android:id="@+id/actionHouseSetting"
+        android:title="Home"
+        android:icon="@drawable/house"
+        android:orderInCategory="300"
+        app:showAsAction="always" />
+    <item android:id="@+id/About"
+        android:title="About"
+        android:orderInCategory="400"/>
+</menu>
