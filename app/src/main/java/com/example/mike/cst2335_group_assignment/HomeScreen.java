@@ -10,17 +10,22 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 public class HomeScreen extends AppCompatActivity {
     private static final String ACTIVITY_NAME = "Home Screen Activity";
+    ImageView imageView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        imageView = (ImageView) findViewById(R.id.HouseImage);
+        imageView.setImageResource(R.mipmap.house_image);
+        imageView.getLayoutParams().height = 800;
+        imageView.getLayoutParams().width = 800;
     }
 
     @Override
