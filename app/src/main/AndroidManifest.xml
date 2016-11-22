@@ -25,7 +25,10 @@
         <activity
             android:name=".LivingRoomActivity"
             android:label="@string/title_activity_living_room"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".HSGarageActivity" />
+        <activity android:name=".HSHouseTempActivity" />
+        <activity android:name=".HSOutsideTempActivity"></activity>
     </application>
 
 </manifest>

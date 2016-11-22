@@ -7,4 +7,9 @@
     <string name="title_activity_living_room">LivingRoomActivity</string>
     <string name="title_name">CST2335 Group Assignment</string>
     <string name="title_by">By Jeff McNally and Michael Gordanier</string>
+    <string-array name="home_setting_menu_array">
+        <item>Garage</item>
+        <item>House Temperature</item>
+        <item>Outside Weather</item>
+    </string-array>
 </resources>
