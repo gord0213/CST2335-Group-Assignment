@@ -12,5 +12,9 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.mike.cst2335_group_assignment.Lamp1Activity"
     tools:showIn="@layout/activity_lamp1">
-
+    <ToggleButton
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/LightSwitch"
+        android:textOn=""/>
 </RelativeLayout>
