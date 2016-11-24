@@ -20,6 +20,7 @@ public class LivingRoomActivity extends AppCompatActivity {
     private static final String ACTIVITY_NAME = "Living Room Activity";
     ListView mainMenuView;
     String[] menuList;
+    Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,15 +37,25 @@ public class LivingRoomActivity extends AppCompatActivity {
                 Log.i(ACTIVITY_NAME, "You Clicked a menu item");
                 Toast.makeText(getApplicationContext(), menuList[position], Toast.LENGTH_SHORT).show();
                 if(menuList[position].equals("Lamp 1")){
-
+                    intent = new Intent(LivingRoomActivity.this, Lamp1Activity.class);
+                    Log.i(ACTIVITY_NAME, "Going to lamp 1 activity");
+                    startActivity(intent);
                 }else if(menuList[position].equals("Lamp 2")){
-
+                    intent = new Intent(LivingRoomActivity.this, Lamp2Activity.class);
+                    Log.i(ACTIVITY_NAME, "Going to lamp 2 activity");
+                    startActivity(intent);
                 }else if(menuList[position].equals("Lamp 3")){
-
+                    intent = new Intent(LivingRoomActivity.this, Lamp3Activity.class);
+                    Log.i(ACTIVITY_NAME, "Going to lamp 3 activity");
+                    startActivity(intent);
                 }else if(menuList[position].equals("Television")){
-
+                    intent = new Intent(LivingRoomActivity.this, TelevisionActivity.class);
+                    Log.i(ACTIVITY_NAME, "Going to lamp 1 activity");
+                    startActivity(intent);
                 }else if(menuList[position].equals("Blinds")){
-
+                    intent = new Intent(LivingRoomActivity.this, BlindsActivity.class);
+                    Log.i(ACTIVITY_NAME, "Going to lamp 1 activity");
+                    startActivity(intent);
                 }
             }
 
@@ -76,5 +87,30 @@ public class LivingRoomActivity extends AppCompatActivity {
                 break;
         }
         return true;
+    }
+    @Override
+    protected void onResume(){
+        super.onResume();
+        Log.i(ACTIVITY_NAME, "In onResume()");
+    }
+
+    @Override
+    protected void onStart(){
+        super.onStart();
+        Log.i(ACTIVITY_NAME, "In onStart()");
+
+    }
+
+    @Override
+    protected void onPause(){
+        super.onPause();
+        Log.i(ACTIVITY_NAME, "In onPause()");
+    }
+
+    @Override
+    protected void onStop(){
+        super.onStop();
+        Log.i(ACTIVITY_NAME, "In onStop()");
+
     }
 }

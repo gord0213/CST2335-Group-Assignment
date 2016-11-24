@@ -13,4 +13,11 @@
     tools:context="com.example.mike.cst2335_group_assignment.BlindsActivity"
     tools:showIn="@layout/activity_blinds">
 
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:rotation="-90"
+        android:id="@+id/blindSlider"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"/>
 </RelativeLayout>
