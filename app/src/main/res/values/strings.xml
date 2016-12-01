@@ -18,4 +18,6 @@
     <string name="title_activity_lamp3">Lamp3Activity</string>
     <string name="title_activity_television">TelevisionActivity</string>
     <string name="title_activity_blinds">BlindsActivity</string>
+    <string name="Ok"> Yes I would   </string>
+    <string name="No"> No I wouldn't </string>
 </resources>

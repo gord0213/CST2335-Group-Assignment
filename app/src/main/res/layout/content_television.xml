@@ -17,45 +17,62 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@mipmap/leftarrow"
-        android:layout_alignTop="@+id/EnterButton"
-        android:layout_toStartOf="@+id/EnterButton"
+        android:layout_alignTop="@+id/enterButton"
+        android:layout_toStartOf="@+id/enterButton"
         android:layout_marginEnd="18dp"
-        android:id="@+id/leftArrow" />
+        android:id="@+id/leftArrow"
+        android:contentDescription="This will make the selection go right"/>
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@mipmap/rightarrow"
-        android:layout_alignTop="@+id/EnterButton"
-        android:layout_toEndOf="@+id/EnterButton"
+        android:layout_alignTop="@+id/enterButton"
+        android:layout_toEndOf="@+id/enterButton"
         android:layout_marginStart="21dp"
-        android:id="@+id/rightArrow" />
+        android:id="@+id/rightArrow"
+        android:contentDescription="This will mae the selection go left" />
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@mipmap/uparrow"
-        android:layout_above="@+id/EnterButton"
+        android:layout_above="@+id/enterButton"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="28dp"
-        android:id="@+id/upArrow" />
+        android:id="@+id/upArrow"
+        android:contentDescription="This will move the selection up"/>
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@mipmap/downarrow"
-        android:id="@+id/downButton"
+        android:id="@+id/downArrow"
         android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/leftArrow" />
+        android:layout_toEndOf="@+id/leftArrow"
+        android:contentDescription="This will make the space go down"/>
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@mipmap/enter_button"
         android:layout_marginBottom="26dp"
-        android:id="@+id/EnterButton"
-        android:layout_above="@+id/downButton"
-        android:layout_alignStart="@+id/upArrow" />
+        android:id="@+id/enterButton"
+        android:layout_above="@+id/downArrow"
+        android:layout_alignStart="@+id/upArrow"
+        android:contentDescription="This will press the space that is selected"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:text="000"
+        android:maxLength="3"
+        android:id="@+id/channelNumber"
+        android:layout_marginBottom="54dp"
+        android:layout_above="@+id/upArrow"
+        android:layout_toEndOf="@+id/textView2"
+        android:layout_marginStart="11dp" />
 
     <TextView
         android:text="Channel"
@@ -63,35 +80,36 @@
         android:layout_height="wrap_content"
         android:id="@+id/textView2"
         android:layout_alignBaseline="@+id/channelNumber"
-        android:layout_toStartOf="@+id/channelNumber" />
-
-    <Button
-        android:text="Turn Tv on/off"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignEnd="@+id/channelNumber"
-        android:layout_marginEnd="13dp"
-        android:id="@+id/button" />
+        android:layout_alignBottom="@+id/channelNumber"
+        android:layout_toStartOf="@+id/upArrow" />
 
     <TextView
         android:text="is Tv On or off"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/textView3"
         android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/button"
-        android:layout_marginTop="10dp"
-        android:id="@+id/textView3" />
+        android:layout_toEndOf="@+id/onOffButton"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="19dp" />
 
-    <EditText
+    <Button
+        android:text="Turn Tv on/off"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="00"
-        android:id="@+id/channelNumber"
-        android:paddingLeft="10dp"
-        android:layout_below="@+id/button"
-        android:layout_alignStart="@+id/upArrow"
-        android:layout_marginTop="73dp" />
+        android:id="@+id/onOffButton"
+        android:contentDescription="Turning Tv On/Off"
+        android:layout_alignBaseline="@+id/textView3"
+        android:layout_alignBottom="@+id/textView3"
+        android:layout_alignStart="@+id/leftArrow" />
+
+    <Button
+        android:text="Select \nFavorite \nChannel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/favButton"
+        android:layout_above="@+id/upArrow"
+        android:layout_toEndOf="@+id/channelNumber"
+        android:layout_marginBottom="37dp" />
 
 </RelativeLayout>
