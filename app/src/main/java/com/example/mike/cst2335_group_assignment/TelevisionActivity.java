@@ -67,29 +67,29 @@ public class TelevisionActivity extends AppCompatActivity {
                 Toast.makeText(TelevisionActivity.this, "You clicked the Left Arrow", Toast.LENGTH_SHORT).show();
             }
         });
-
         buttonOnOff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int clicked = 0;
                 if (clicked != 1) {
                     Toast.makeText(TelevisionActivity.this, "You put TV to sleep", Toast.LENGTH_SHORT).show();
-                    clicked +=1;
+                    clicked = 1;
                 }
                 else {
                     Toast.makeText(TelevisionActivity.this, "You woke the TV up", Toast.LENGTH_SHORT).show();
-                    clicked-=1;
+                    clicked = 0 ;
                 }
             }
         });
         buttonOnOff.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                 int longClicked =0;
+                int longClicked =0;
                 if (longClicked == 0) {
+                    longClicked += 1;
                     Toast.makeText(TelevisionActivity.this, "You shut tv off", Toast.LENGTH_SHORT).show();
                     tvOnOff.setText("Tv is OFF");
-                    longClicked += 1;
+
                 }else{
                     Toast.makeText(TelevisionActivity.this, "You turned the TV back on", Toast.LENGTH_SHORT).show();
                     tvOnOff.setText("TV is ON");
@@ -135,6 +135,7 @@ public class TelevisionActivity extends AppCompatActivity {
                             .setAction("Action", null).show();
                     }
                 });
+                builder.show();
                 return false;
             }
         });
