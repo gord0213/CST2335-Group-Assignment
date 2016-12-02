@@ -35,7 +35,6 @@ public class LivingRoomActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Log.i(ACTIVITY_NAME, "You Clicked a menu item");
-                Toast.makeText(getApplicationContext(), menuList[position], Toast.LENGTH_SHORT).show();
                 if(menuList[position].equals("Lamp 1")){
                     intent = new Intent(LivingRoomActivity.this, Lamp1Activity.class);
                     Log.i(ACTIVITY_NAME, "Going to lamp 1 activity");
@@ -93,24 +92,22 @@ public class LivingRoomActivity extends AppCompatActivity {
         super.onResume();
         Log.i(ACTIVITY_NAME, "In onResume()");
     }
-
     @Override
     protected void onStart(){
         super.onStart();
         Log.i(ACTIVITY_NAME, "In onStart()");
 
     }
-
     @Override
     protected void onPause(){
         super.onPause();
         Log.i(ACTIVITY_NAME, "In onPause()");
     }
-
     @Override
     protected void onStop(){
         super.onStop();
         Log.i(ACTIVITY_NAME, "In onStop()");
 
     }
+
 }

@@ -1,6 +1,7 @@
 package com.example.mike.cst2335_group_assignment;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -8,6 +9,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,16 +23,16 @@ import java.util.ArrayList;
 
 public class TelevisionActivity extends AppCompatActivity {
     private static final String ACTIVITY_NAME = "Television activity ";
-    ImageButton enterButton;
-    ImageButton leftArrow;
-    ImageButton rightArrow;
-    ImageButton downArrow;
-    ImageButton upArrow;
-    Button buttonOnOff;
-    Button favButton;
-    EditText channel;
-    TextView tvOnOff;
-    ArrayList<Integer> favChannels = new ArrayList<>();
+    private ImageButton enterButton;
+    private ImageButton leftArrow;
+    private ImageButton rightArrow;
+    private ImageButton downArrow;
+    private ImageButton upArrow;
+    private Button buttonOnOff;
+    private Button favButton;
+    private EditText channel;
+    private TextView tvOnOff;
+    private ArrayList<Integer> favChannels = new ArrayList<>();
     private Helper helper;
 
 
@@ -68,32 +70,33 @@ public class TelevisionActivity extends AppCompatActivity {
             }
         });
         buttonOnOff.setOnClickListener(new View.OnClickListener() {
+            int clicked = 0;
             @Override
             public void onClick(View v) {
-                int clicked = 0;
-                if (clicked != 1) {
+
+                if (clicked++ % 2 == 0) {
                     Toast.makeText(TelevisionActivity.this, "You put TV to sleep", Toast.LENGTH_SHORT).show();
-                    clicked = 1;
+
                 }
                 else {
                     Toast.makeText(TelevisionActivity.this, "You woke the TV up", Toast.LENGTH_SHORT).show();
-                    clicked = 0 ;
+
                 }
             }
         });
         buttonOnOff.setOnLongClickListener(new View.OnLongClickListener() {
+            int longClicked =0;
             @Override
             public boolean onLongClick(View v) {
-                int longClicked =0;
-                if (longClicked == 0) {
-                    longClicked += 1;
+
+                if (longClicked++ % 2 == 0) {
                     Toast.makeText(TelevisionActivity.this, "You shut tv off", Toast.LENGTH_SHORT).show();
                     tvOnOff.setText("Tv is OFF");
 
                 }else{
                     Toast.makeText(TelevisionActivity.this, "You turned the TV back on", Toast.LENGTH_SHORT).show();
                     tvOnOff.setText("TV is ON");
-                    longClicked -= 1;
+
                 }
                 return false;
             }
@@ -122,6 +125,8 @@ public class TelevisionActivity extends AppCompatActivity {
                         try {
                             int chanel = Integer.valueOf(channelToString);
                             favChannels.add(chanel);
+                            Log.i(ACTIVITY_NAME, "Array list has " + favChannels);
+                            helper.inserData(chanel);
                         }catch(NumberFormatException numEx){
                             Log.e(ACTIVITY_NAME, "That was not a integer...");
                         }
@@ -142,7 +147,8 @@ public class TelevisionActivity extends AppCompatActivity {
         favButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(TelevisionActivity.this, FavoritesChannel.class);
+                startActivity(intent);
             }
         });
     }
@@ -158,6 +164,7 @@ public class TelevisionActivity extends AppCompatActivity {
         buttonOnOff = (Button)      findViewById(R.id.onOffButton);
         favButton   = (Button)      findViewById(R.id.favButton);
         channel     = (EditText)    findViewById(R.id.channelNumber);
+        tvOnOff     = (TextView)    findViewById(R.id.TvOnOFf);
         helper      = new Helper(this);
     }
     
@@ -186,5 +193,7 @@ public class TelevisionActivity extends AppCompatActivity {
         Log.i(ACTIVITY_NAME, "In onStop()");
 
     }
-
+    public void changeChannel(int newChannel){
+        channel.setText((newChannel));
+    }
 }

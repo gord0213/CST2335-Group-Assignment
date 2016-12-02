@@ -23,14 +23,10 @@ public class BlindsActivity extends AppCompatActivity {
         seekBar.setProgress(0);
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-
-            }
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {         }
 
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
+            public void onStartTrackingTouch(SeekBar seekBar) { }
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {

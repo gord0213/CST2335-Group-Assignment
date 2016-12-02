@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.os.Bundle;
 import android.util.Log;
 
 /**
@@ -13,12 +12,12 @@ import android.util.Log;
  */
 
 public class Helper  extends SQLiteOpenHelper{
-    protected static final String ACTIVITY_NAME = "Database.Helper";
-    protected static final String DATABASE_NAME = "FavChannelDatabase";
-    protected static int VERSION_NUMBER = 1;
-    protected static final String KEY_ID = "Favorite_ID";
-    protected static final String KEY_CHANNEL = "Favorite_Channel";
-    protected static final String TABLE_NAME = "Chat_Message";
+    public static final String ACTIVITY_NAME = "Database.Helper";
+    public static final String DATABASE_NAME = "FavChannelDatabase";
+    public static int VERSION_NUMBER = 1;
+    public static final String KEY_ID = "Favorite_ID";
+    public static final String KEY_CHANNEL = "Favorite_Channel";
+    public static final String TABLE_NAME = "Chat_Message";
 
     public Helper(Context ctx){
         super(ctx, DATABASE_NAME, null, VERSION_NUMBER);
@@ -26,9 +25,9 @@ public class Helper  extends SQLiteOpenHelper{
 
     public void onCreate(SQLiteDatabase db){
         Log.i(ACTIVITY_NAME, ">> onCreate");
-        String CREATE_FAVORITE_CHANNEL_TABLE = "CREATE TABLE" + TABLE_NAME +
-                " (" + KEY_ID + "INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + KEY_CHANNEL + "TEXT)";
+        String CREATE_FAVORITE_CHANNEL_TABLE = "CREATE TABLE " + TABLE_NAME +
+                " (" + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + KEY_CHANNEL + " TEXT)";
         db.execSQL(CREATE_FAVORITE_CHANNEL_TABLE);
     }
     public void inserData(int ChannelNumber){

@@ -84,10 +84,10 @@
         android:layout_toStartOf="@+id/upArrow" />
 
     <TextView
-        android:text="is Tv On or off"
+        android:text="TV is of"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView3"
+        android:id="@+id/TvOnOFf"
         android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/onOffButton"
         android:layout_marginStart="13dp"
@@ -99,8 +99,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/onOffButton"
         android:contentDescription="Turning Tv On/Off"
-        android:layout_alignBaseline="@+id/textView3"
-        android:layout_alignBottom="@+id/textView3"
+        android:layout_alignBaseline="@+id/TvOnOFf"
+        android:layout_alignBottom="@+id/TvOnOFf"
         android:layout_alignStart="@+id/leftArrow" />
 
     <Button
