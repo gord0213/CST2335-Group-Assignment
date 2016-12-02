@@ -13,4 +13,34 @@
     tools:context="com.example.mike.cst2335_group_assignment.HSOutsideTempActivity"
     tools:showIn="@layout/activity_hsoutside_temp">
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/CurrentWeather"
+        android:minWidth="200dp"
+        android:minHeight="200dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/CurrentTemp"
+        android:layout_below="@+id/CurrentWeather"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/minTemp"
+        android:layout_below="@+id/CurrentTemp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/maxTemp"
+        android:layout_below="@+id/minTemp"/>
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:id="@+id/progressBar"
+        android:layout_alignBottom="@+id/CurrentWeather"
+        android:layout_toEndOf="@+id/CurrentWeather"
+        android:layout_marginBottom="73dp" />
+
 </RelativeLayout>

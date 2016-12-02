@@ -13,4 +13,40 @@
     tools:context="com.example.mike.cst2335_group_assignment.HSGarageActivity"
     tools:showIn="@layout/activity_hsgarage">
 
+    <TextView
+        android:text="@string/gs_status"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/txtGarageStatusTitle" />
+
+    <TextView
+        android:text="@string/gs_closed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/txtGarageStatus" />
+
+    <Switch
+        android:text="@string/gs_light"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/swtGarageLight"
+        android:layout_below="@+id/txtGarageStatusTitle"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:text="@string/gs_btnOpenClose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="41dp"
+        android:id="@+id/btnOpenClose"
+        android:layout_below="@+id/swtGarageLight"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>
