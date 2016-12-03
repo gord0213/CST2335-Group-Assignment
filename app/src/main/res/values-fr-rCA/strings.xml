@@ -2,9 +2,23 @@
 <resources>
     <string name="app_name">CST2335-Group-Assignment</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_house_settings">House Settings</string>
+    <string name="title_activity_house_settings">HouseSettingsActivity</string>
     <string name="about">Version 1.0, By Michael Gordanier and Jeff McNally</string>
     <string name="title_activity_living_room">LivingRoomActivity</string>
     <string name="title_name">CST2335 Group Assignment</string>
-    <string name="title_by">By Jeff McNally and Michael Gordanier</string>
+    <string name="title_by">By Jeff McNally and Michale Gordanier</string>
+    <string-array name="living_room_menu">
+        <item>Lamp 1</item>
+        <item>Lamp 2</item>
+        <item>Lamp 3</item>
+        <item>Television</item>
+        <item>Blinds</item>
+    </string-array>
+    <string name="title_activity_lamp1">Lamp1Activity</string>
+    <string name="title_activity_lamp2">Lamp2Activity</string>
+    <string name="title_activity_lamp3">Lamp3Activity</string>
+    <string name="title_activity_television">TelevisionActivity</string>
+    <string name="title_activity_blinds">BlindsActivity</string>
+    <string name="Ok"> Yes I would   </string>
+    <string name="No"> No I wouldn\'t </string>
 </resources>

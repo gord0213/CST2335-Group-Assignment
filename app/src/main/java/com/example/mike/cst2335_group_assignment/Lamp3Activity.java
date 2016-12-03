@@ -1,5 +1,7 @@
 package com.example.mike.cst2335_group_assignment;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -21,8 +23,15 @@ public class Lamp3Activity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         colorBar = (SeekBar) findViewById(R.id.colorSlider);
 
-        colorBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            float[] hsvColor = {0, 1, 1};
+        final SharedPreferences prefs = getSharedPreferences("cst2335_group_assignment", Context.MODE_PRIVATE);
+        float[] hsvColor = {prefs.getFloat("LightColor0", 0), 1, 1};
+        if (hsvColor[0]!= 0) {
+            getWindow().getDecorView().setBackgroundColor(Color.HSVToColor(hsvColor));
+        }else{
+            getWindow().getDecorView().setBackgroundColor(Color.WHITE);
+        }
+         colorBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            public float[] hsvColor = {0, 1, 1};
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 if (progress == 0) {
@@ -34,15 +43,17 @@ public class Lamp3Activity extends AppCompatActivity {
 
                 }
             }
-
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
 
             }
-
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.putFloat("LightColor0", hsvColor[0]);
+                editor.putFloat("LightColor1", hsvColor[1]);
+                editor.putFloat("LightColor2", hsvColor[2]);
+                editor.commit();
             }
         });
 

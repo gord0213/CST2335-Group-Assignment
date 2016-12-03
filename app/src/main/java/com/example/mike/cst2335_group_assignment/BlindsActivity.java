@@ -1,5 +1,7 @@
 package com.example.mike.cst2335_group_assignment;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -20,8 +22,12 @@ public class BlindsActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         seekBar = (SeekBar) findViewById(R.id.blindSlider);
-        seekBar.setProgress(0);
+        final SharedPreferences prefs = getSharedPreferences("cst2335_group_assignment", Context.MODE_PRIVATE);
+
+
+        seekBar.setProgress(prefs.getInt("BlindProgress", 0));
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {         }
 
@@ -33,11 +39,18 @@ public class BlindsActivity extends AppCompatActivity {
                 int progress = seekBar.getProgress();
                 if (progress == 0) {
                     Toast.makeText(BlindsActivity.this, "Blind is fully down", Toast.LENGTH_SHORT).show();
-                }else if (progress == 50){
-                    Toast.makeText(BlindsActivity.this, "Blind is halfway", Toast.LENGTH_SHORT).show();
+                }else if (progress < 40 && progress > 0){
+                    Toast.makeText(BlindsActivity.this, "Blind is almost down", Toast.LENGTH_SHORT).show();
+                }else if (progress > 40 && progress < 60) {
+                    Toast.makeText(BlindsActivity.this, "Blind is about halfway", Toast.LENGTH_SHORT).show();
+                }else if (progress > 60 && progress < 100){
+                    Toast.makeText(BlindsActivity.this, "Blind is almost up", Toast.LENGTH_SHORT).show();
                 }else if(progress == 100){
                     Toast.makeText(BlindsActivity.this, "Blind is fully up", Toast.LENGTH_SHORT).show();
                 }
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.putInt("BlindProgress", progress);
+                editor.commit();
             }
         });
     }

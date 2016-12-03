@@ -1,7 +1,9 @@
 package com.example.mike.cst2335_group_assignment;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -44,7 +46,12 @@ public class TelevisionActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         init();
-     
+
+        final SharedPreferences prefs = getSharedPreferences("cst2335_group_assignment", Context.MODE_PRIVATE);
+        int favChannelText = prefs.getInt("FavChannel", 000);
+        channel.setText(favChannelText);
+
+
         downArrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -109,6 +116,9 @@ public class TelevisionActivity extends AppCompatActivity {
                     Toast.makeText(TelevisionActivity.this, "There is no channel to select", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(TelevisionActivity.this, "Chanel " + channel.getText().toString() + " is selected", Toast.LENGTH_SHORT).show();
+                    SharedPreferences.Editor editor = prefs.edit();
+                    editor.putInt("FavChannel", Integer.valueOf(channel.getText().toString()) );
+                    editor.commit();
                 }
             }
         });
@@ -127,6 +137,9 @@ public class TelevisionActivity extends AppCompatActivity {
                             favChannels.add(chanel);
                             Log.i(ACTIVITY_NAME, "Array list has " + favChannels);
                             helper.inserData(chanel);
+                            SharedPreferences.Editor editor = prefs.edit();
+                            editor.putInt("FavChannel", Integer.valueOf(channel.getText().toString()) );
+                            editor.commit();
                         }catch(NumberFormatException numEx){
                             Log.e(ACTIVITY_NAME, "That was not a integer...");
                         }
@@ -193,7 +206,5 @@ public class TelevisionActivity extends AppCompatActivity {
         Log.i(ACTIVITY_NAME, "In onStop()");
 
     }
-    public void changeChannel(int newChannel){
-        channel.setText((newChannel));
-    }
+
 }

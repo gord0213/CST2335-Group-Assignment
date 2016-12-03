@@ -1,5 +1,8 @@
 package com.example.mike.cst2335_group_assignment;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -35,8 +38,12 @@ public class FavoritesChannel extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String channel = channelList.get(position);
-                televisionActivity.changeChannel(Integer.valueOf(channel));
-                finish();
+                SharedPreferences prefs = getSharedPreferences("cst2335_group_assignment", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.putInt("FavChannel", Integer.valueOf(channel));
+                editor.commit();
+                Intent intent = new Intent(FavoritesChannel.this, TelevisionActivity.class);
+                startActivity(intent);
             }
         });
     }

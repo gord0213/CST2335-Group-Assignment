@@ -1,6 +1,8 @@
 package com.example.mike.cst2335_group_assignment;
 
 import android.content.ContentResolver;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.design.widget.FloatingActionButton;
@@ -22,12 +24,21 @@ public class Lamp2Activity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         lightDimm = (SeekBar) findViewById(R.id.lightDimmer);
-        lightDimm.setProgress(0);
+
+        final SharedPreferences prefs = getSharedPreferences("cst2335_group_assignment", Context.MODE_PRIVATE);
+        int progress = prefs.getInt("Progress%", 0);
+        float backLightValue = prefs.getFloat("LightValue", 1);
+
+        lightDimm.setProgress(progress);
+        WindowManager.LayoutParams layoutParams = getWindow().getAttributes();
+        layoutParams.screenBrightness = backLightValue;
+        getWindow().setAttributes(layoutParams);
         lightDimm.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
+            float backLightValue;
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 ContentResolver cr = getContentResolver();
-                float backLightValue;
 //                try{
                     Log.i(ACTIVITY_NAME, "Light is at " + progress );
 //                    int brightness = Settings.System.getInt(cr, Settings.System.SCREEN_BRIGHTNESS);
@@ -51,7 +62,10 @@ public class Lamp2Activity extends AppCompatActivity {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.putInt("Progress%", seekBar.getProgress());
+                editor.putFloat("LightValue",  backLightValue);
+                editor.commit();
             }
         });
 
