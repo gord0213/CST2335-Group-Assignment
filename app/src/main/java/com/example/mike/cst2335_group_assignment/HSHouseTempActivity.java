@@ -47,7 +47,7 @@ public class HSHouseTempActivity extends AppCompatActivity {
         tempAdapterList = new ArrayList<String>();
 
         while (cursor.moveToNext()){
-            tempAdapterList.add("Time: " + cursor.getString(cursor.getColumnIndex(tempHelper.KEY_TIME)) + ", Temp: " + cursor.getString(cursor.getColumnIndex(tempHelper.KEY_TEMP)));
+            tempAdapterList.add(cursor.getString(cursor.getColumnIndex(tempHelper.KEY_DATA)));
         }
 
         tempAdapter = new TempAdapter(this);
@@ -84,9 +84,8 @@ public class HSHouseTempActivity extends AppCompatActivity {
             @Override
             public void onClick (View view){
                 tempAdapterList.add("Time: " + setTime.getText().toString() + ", Temp: " + setTemp.getText().toString());
-                tempHelper.insertData(setTime.getText().toString(), setTemp.getText().toString());
+                tempHelper.insertData("Time: " + setTime.getText().toString() + ", Temp: " + setTemp.getText().toString());
                 tempAdapter.notifyDataSetChanged(); //this restarts the process of getCount()/ getView()
-//                tempText.setText("");
             }
         });
     }
@@ -108,11 +107,7 @@ public class HSHouseTempActivity extends AppCompatActivity {
             LayoutInflater inflater = HSHouseTempActivity.this.getLayoutInflater();
 
             View result = null ;
-//            if(position%2 == 0) {
                 result = inflater.inflate(R.layout.scheduled_temp_list, null);
-//            } else {
-//                result = inflater.inflate(R.layout.chat_row_outgoing, null);
-//            }
             TextView temp = (TextView)result.findViewById(R.id.temp_text);
             temp.setText(   getItem(position)  ); // get the string at position
             return result;
@@ -131,7 +126,6 @@ public class HSHouseTempActivity extends AppCompatActivity {
     protected void onStart(){
         super.onStart();
         Log.i(ACTIVITY_NAME, "In onStart()");
- //       SharedPreferences prefs = getSharedPreferences("cst2335_group_assignment", Context.MODE_PRIVATE);
 
 
 
