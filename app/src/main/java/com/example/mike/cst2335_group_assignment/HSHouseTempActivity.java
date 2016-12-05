@@ -2,6 +2,8 @@ package com.example.mike.cst2335_group_assignment;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,11 +26,13 @@ public class HSHouseTempActivity extends AppCompatActivity {
     public int houseTemp;
     ArrayList<String> tempAdapterList;
     TempAdapter tempAdapter;
-//    TempDatabaseHelper tempHelper;
+    HomeTempDatabaseHelper tempHelper;
+    SQLiteDatabase myDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.i(ACTIVITY_NAME, "In onCreate()");
         setContentView(R.layout.activity_hshouse_temp);
         SharedPreferences prefs = getSharedPreferences("cst2335_group_assignment", Context.MODE_PRIVATE);
         ListView schedTempView = (ListView) findViewById(R.id.schedTempView);
@@ -38,13 +42,21 @@ public class HSHouseTempActivity extends AppCompatActivity {
         final EditText setTemp = (EditText) findViewById(R.id.setTemp);
         final EditText setTime = (EditText) findViewById(R.id.setTime);
         Button btnSetTemp = (Button) findViewById(R.id.btnSetTemp);
+        tempHelper = new HomeTempDatabaseHelper(this);
+        Cursor cursor = tempHelper.getData();
         tempAdapterList = new ArrayList<String>();
+
+        while (cursor.moveToNext()){
+            tempAdapterList.add("Time: " + cursor.getString(cursor.getColumnIndex(tempHelper.KEY_TIME)) + ", Temp: " + cursor.getString(cursor.getColumnIndex(tempHelper.KEY_TEMP)));
+        }
 
         tempAdapter = new TempAdapter(this);
         schedTempView.setAdapter(tempAdapter);
 
         txtHouseTemp.setText(String.valueOf(houseTemp) + "ºC");
         sbSetTemp.setProgress(valueOf(houseTemp));
+
+
 
         //seek bar to adjust the house temperature
         sbSetTemp.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -72,7 +84,7 @@ public class HSHouseTempActivity extends AppCompatActivity {
             @Override
             public void onClick (View view){
                 tempAdapterList.add("Time: " + setTime.getText().toString() + ", Temp: " + setTemp.getText().toString());
-//                tempHelper.insertData(tempText.getText().toString());
+                tempHelper.insertData(setTime.getText().toString(), setTemp.getText().toString());
                 tempAdapter.notifyDataSetChanged(); //this restarts the process of getCount()/ getView()
 //                tempText.setText("");
             }
@@ -129,13 +141,22 @@ public class HSHouseTempActivity extends AppCompatActivity {
     @Override
     protected void onPause(){
         super.onPause();
+        tempHelper.close();
         Log.i(ACTIVITY_NAME, "In onPause()");
     }
 
     @Override
     protected void onStop(){
         super.onStop();
+        tempHelper.close();
         Log.i(ACTIVITY_NAME, "In onStop()");
 
     }
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        tempHelper.close();
+        Log.i(ACTIVITY_NAME, "In onDestroy()");
+    }
+
 }
