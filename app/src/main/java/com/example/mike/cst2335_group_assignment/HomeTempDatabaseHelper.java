@@ -46,8 +46,8 @@ public class HomeTempDatabaseHelper extends SQLiteOpenHelper {
     public void insertData(String time, String temp){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("KEY_TIME", time);
-        contentValues.put("KEY_TEMP", temp);
+        contentValues.put(KEY_TIME, time);
+        contentValues.put(KEY_TEMP, temp);
 
         long insertResult = db.insert(TABLE_NAME, null, contentValues);
         db.close();
