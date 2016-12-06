@@ -48,32 +48,50 @@ public class TelevisionActivity extends AppCompatActivity {
         init();
 
         final SharedPreferences prefs = getSharedPreferences("cst2335_group_assignment", Context.MODE_PRIVATE);
-        int favChannelText = prefs.getInt("FavChannel", 000);
-        channel.setText(favChannelText);
-
+        final SharedPreferences.Editor editor = prefs.edit();
+        final int favChannelText = prefs.getInt("FavChannel", 000);
+        channel.setText(String.valueOf(favChannelText));
 
         downArrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(TelevisionActivity.this, "You clicked the Down Arrow", Toast.LENGTH_SHORT).show();
+                int favchannel = prefs.getInt("FavChannel", 20);
+                favchannel--;
+                channel.setText(String.valueOf(favchannel));
+                editor.putInt("FavChannel", favchannel);
+                editor.commit();
+                Toast.makeText(TelevisionActivity.this, "channel is now " + favchannel, Toast.LENGTH_SHORT).show();
             }
         });
         upArrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(TelevisionActivity.this, "You clicked the Up Arrow", Toast.LENGTH_SHORT).show();
+                int favchannel = prefs.getInt("FavChannel", 20);
+                favchannel++;
+                channel.setText(String.valueOf(favchannel));
+                editor.putInt("FavChannel", favchannel);
+                editor.commit();
+                Toast.makeText(TelevisionActivity.this, "channel is now " + favchannel, Toast.LENGTH_SHORT).show();
             }
         });
         rightArrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(TelevisionActivity.this, "You clicked the Right Arrow", Toast.LENGTH_SHORT).show();
+                int TVVolumn = prefs.getInt("Volumn", 20);
+                TVVolumn++;
+                editor.putInt("Volumn", TVVolumn);
+                editor.commit();
+                Toast.makeText(TelevisionActivity.this, "Your volumn is now set to " + TVVolumn, Toast.LENGTH_SHORT).show();
             }
         });
         leftArrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(TelevisionActivity.this, "You clicked the Left Arrow", Toast.LENGTH_SHORT).show();
+                int TVVolumn = prefs.getInt("Volumn", 20);
+                TVVolumn--;
+                editor.putInt("Volumn", TVVolumn);
+                editor.commit();
+                Toast.makeText(TelevisionActivity.this, "Your volumn is now set to " + TVVolumn, Toast.LENGTH_SHORT).show();
             }
         });
         buttonOnOff.setOnClickListener(new View.OnClickListener() {

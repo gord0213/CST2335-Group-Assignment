@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_lrhelp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.mike.cst2335_group_assignment.LRHelpActivity">
+
+
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:textStyle="bold"
+        android:id="@+id/textView10" />
+
+    <TextView
+        android:text="An activity to turn on and off the lights."
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView10"
+        android:layout_alignParentStart="true"
+        android:id="@+id/textView11" />
+
+    <TextView
+        android:text="Lamp2Activty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView11"
+        android:textStyle="bold"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="18dp"
+        android:id="@+id/textView12" />
+
+    <TextView
+        android:text="Used for dimming the lights when the seekbar is at the bottom the light will be turned off when the bar is at the top the light is fully on."
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView12"
+        android:layout_alignParentStart="true"
+        android:id="@+id/textView13" />
+
+    <TextView
+        android:text="Lamp3Activty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView13"
+        android:layout_alignParentStart="true"
+        android:textStyle="bold"
+        android:layout_marginTop="18dp"
+        android:id="@+id/textView14" />
+
+    <TextView
+        android:text="Used for changing the color of the lights with the use of a slider if the slider is at 0 or the bottom it will make the light go to its normal color."
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView14"
+        android:layout_alignParentStart="true"
+        android:id="@+id/textView15" />
+
+    <TextView
+        android:text="TelevisionActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView15"
+        android:layout_alignParentStart="true"
+        android:textStyle="bold"
+        android:layout_marginTop="18dp"
+        android:id="@+id/textView16" />
+
+    <TextView
+        android:text="Used for controlling the tv, at the top you can turn it on and off, you can also change the chanel(three digits), you can select the channel my clicking the enter buttoin(the center one) you can also save it to fav channel by pressing and holding the button. To access the fav channels you have to click the favorite channel button that will take you to a new instance and that holds the channels, if you click on one of them it will set the channel to that fav cannel."
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView17"
+        android:layout_below="@+id/textView16"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="BlindsActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView17"
+        android:layout_alignParentStart="true"
+        android:textStyle="bold"
+        android:layout_marginTop="18dp"
+        android:id="@+id/textView18" />
+
+    <TextView
+        android:text="Used for controlling he blinds in the living room, if the bar is at the top the blinds are fully up if the bar is at the bottom the blinds are fully down."
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView18"
+        android:layout_alignParentStart="true"
+        android:id="@+id/textView19" />
+</RelativeLayout>

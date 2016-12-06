@@ -49,11 +49,15 @@ public class LivingRoomActivity extends AppCompatActivity {
                     startActivity(intent);
                 }else if(menuList[position].equals("Television")){
                     intent = new Intent(LivingRoomActivity.this, TelevisionActivity.class);
-                    Log.i(ACTIVITY_NAME, "Going to lamp 1 activity");
+                    Log.i(ACTIVITY_NAME, "Going to television activity");
                     startActivity(intent);
                 }else if(menuList[position].equals("Blinds")){
                     intent = new Intent(LivingRoomActivity.this, BlindsActivity.class);
-                    Log.i(ACTIVITY_NAME, "Going to lamp 1 activity");
+                    Log.i(ACTIVITY_NAME, "Going to television activity");
+                    startActivity(intent);
+                }else if(menuList[position].equals("Help")) {
+                    intent = new Intent(LivingRoomActivity.this, LRHelpActivity.class);
+                    Log.i(ACTIVITY_NAME, "Going to help activity");
                     startActivity(intent);
                 }
             }
