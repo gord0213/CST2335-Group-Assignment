@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    <item android:id="@+id/actionHome"
+        android:title="Home"
+        android:icon="@drawable/star"
+        android:orderInCategory="101"/>
+    <item android:id="@+id/actionLivingRoom"
+        android:title="Home"
+        android:icon="@drawable/couch"
+        android:orderInCategory="200" />
+    <item android:id="@+id/actionHouseSetting"
+        android:title="Home"
+        android:icon="@drawable/house"
+        android:orderInCategory="300" />
+    <item android:id="@+id/About"
+        android:title="About"
+        android:orderInCategory="400"/>
+</menu>

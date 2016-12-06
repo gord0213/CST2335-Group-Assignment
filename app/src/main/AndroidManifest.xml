@@ -2,9 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.mike.cst2335_group_assignment">
 
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/house_image"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -25,7 +27,28 @@
         <activity
             android:name=".LivingRoomActivity"
             android:label="@string/title_activity_living_room"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Lamp1Activity"
+            android:label="@string/title_activity_lamp1"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Lamp2Activity"
+            android:label="@string/title_activity_lamp2"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Lamp3Activity"
+            android:label="@string/title_activity_lamp3"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".TelevisionActivity"
+            android:label="@string/title_activity_television"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".BlindsActivity"
+            android:label="@string/title_activity_blinds"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".FavoritesChannel"></activity>
     </application>
 
 </manifest>
