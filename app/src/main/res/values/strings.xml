@@ -5,6 +5,7 @@
     <string name="title_activity_hsgarage">Garage</string>
     <string name="title_activity_hshouse_temp">House Temperature</string>
     <string name="title_activity_hsoutside_temp">Outside Temperature</string>
+    <string name="title_activity_hshelp">House Settings Help</string>
     <string name="about">Version 1.0, By Michael Gordanier and Jeff McNally</string>
     <string name="title_activity_living_room">LivingRoomActivity</string>
     <string name="title_name">CST2335 Group Assignment</string>

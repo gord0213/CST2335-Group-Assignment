@@ -1,10 +1,15 @@
 package com.example.mike.cst2335_group_assignment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -23,6 +28,7 @@ public class HSGarageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_hsgarage);
         Log.i(ACTIVITY_NAME, "In onCreate()");
         Button btnOpenClose = (Button) findViewById(R.id.btnOpenClose);
+        FloatingActionButton fabBack = (FloatingActionButton) findViewById(R.id.fabBack);
         final Switch swtGarageLight = (Switch) findViewById(R.id.swtGarageLight);
         final TextView txtGarageStatus = (TextView) findViewById(R.id.txtGarageStatus);
 
@@ -66,6 +72,46 @@ public class HSGarageActivity extends AppCompatActivity {
                 }
             }
         });
+
+        fabBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_house_settings, menu);
+        return true;
+    }
+    public boolean onOptionsItemSelected(MenuItem mi){
+        int id = mi.getItemId();
+        Intent intent;
+        switch (id){
+            case R.id.actionHome:
+                intent = new Intent(HSGarageActivity.this, HomeScreen.class);
+                Log.i(ACTIVITY_NAME, "Going to Home Screen");
+                startActivity(intent);
+                break;
+            case R.id.actionLivingRoom:
+                intent = new Intent(HSGarageActivity.this, LivingRoomActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.actionHouseSetting:
+                Toast.makeText(HSGarageActivity.this, "You are already here !!!", Toast.LENGTH_LONG).show();
+                break;
+            case R.id.About:
+                Snackbar.make(findViewById(android.R.id.content),R.string.about, Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                break;
+            case R.id.Help:
+                intent = new Intent(HSGarageActivity.this, HSHelpActivity.class);
+                startActivity(intent);
+                break;
+        }
+        return true;
     }
 
     @Override

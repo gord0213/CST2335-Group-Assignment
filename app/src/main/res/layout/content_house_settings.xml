@@ -13,11 +13,26 @@
     tools:context="com.example.mike.cst2335_group_assignment.HouseSettingsActivity"
     tools:showIn="@layout/activity_house_settings">
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/HouseImage"
+        android:layout_centerHorizontal="true"
+        />
+
     <ListView
         android:id="@+id/mainMenuView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/HouseImage"
         android:layout_alignParentStart="true" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:srcCompat="@android:drawable/ic_menu_revert"
+        app:backgroundTint="?attr/actionModeSplitBackground" />
 
 </RelativeLayout>

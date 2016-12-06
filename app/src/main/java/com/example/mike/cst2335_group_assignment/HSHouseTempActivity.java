@@ -1,13 +1,18 @@
 package com.example.mike.cst2335_group_assignment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -16,6 +21,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -35,6 +41,7 @@ public class HSHouseTempActivity extends AppCompatActivity {
         Log.i(ACTIVITY_NAME, "In onCreate()");
         setContentView(R.layout.activity_hshouse_temp);
         SharedPreferences prefs = getSharedPreferences("cst2335_group_assignment", Context.MODE_PRIVATE);
+        FloatingActionButton fabBack = (FloatingActionButton) findViewById(R.id.fabBack);
         ListView schedTempView = (ListView) findViewById(R.id.schedTempView);
         houseTemp = prefs.getInt("HouseTemp", 22);
         TextView txtHouseTemp = (TextView) findViewById(R.id.txtHouseTemp);
@@ -88,6 +95,13 @@ public class HSHouseTempActivity extends AppCompatActivity {
                 tempAdapter.notifyDataSetChanged(); //this restarts the process of getCount()/ getView()
             }
         });
+
+        fabBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     private class TempAdapter extends ArrayAdapter<String> {
@@ -114,6 +128,39 @@ public class HSHouseTempActivity extends AppCompatActivity {
 
         }
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_house_settings, menu);
+        return true;
+    }
+    public boolean onOptionsItemSelected(MenuItem mi){
+        int id = mi.getItemId();
+        Intent intent;
+        switch (id){
+            case R.id.actionHome:
+                intent = new Intent(HSHouseTempActivity.this, HomeScreen.class);
+                Log.i(ACTIVITY_NAME, "Going to Home Screen");
+                startActivity(intent);
+                break;
+            case R.id.actionLivingRoom:
+                intent = new Intent(HSHouseTempActivity.this, LivingRoomActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.actionHouseSetting:
+                Toast.makeText(HSHouseTempActivity.this, "You are already here !!!", Toast.LENGTH_LONG).show();
+                break;
+            case R.id.About:
+                Snackbar.make(findViewById(android.R.id.content),R.string.about, Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                break;
+            case R.id.Help:
+                intent = new Intent(HSHouseTempActivity.this, HSHelpActivity.class);
+                startActivity(intent);
+                break;
+        }
+        return true;
     }
 
     @Override

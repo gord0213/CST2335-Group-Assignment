@@ -1,18 +1,24 @@
 package com.example.mike.cst2335_group_assignment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -40,6 +46,7 @@ public class HSOutsideTempActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hsoutside_temp);
         Log.i(ACTIVITY_NAME, "In onCreate()");
+        FloatingActionButton fabBack = (FloatingActionButton) findViewById(R.id.fabBack);
 
         progress = (ProgressBar)findViewById(R.id.progressBar);
         progress.setVisibility(View.VISIBLE);
@@ -50,6 +57,13 @@ public class HSOutsideTempActivity extends AppCompatActivity {
         maxTempText = (TextView) findViewById(R.id.maxTemp);
 
         new ForecastQuery().execute();
+
+        fabBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
     //inner class
     class ForecastQuery extends AsyncTask<String, Integer, String> {
@@ -170,6 +184,39 @@ public class HSOutsideTempActivity extends AppCompatActivity {
             File file = getBaseContext().getFileStreamPath(name);
             return file.exists();
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_house_settings, menu);
+        return true;
+    }
+    public boolean onOptionsItemSelected(MenuItem mi){
+        int id = mi.getItemId();
+        Intent intent;
+        switch (id){
+            case R.id.actionHome:
+                intent = new Intent(HSOutsideTempActivity.this, HomeScreen.class);
+                Log.i(ACTIVITY_NAME, "Going to Home Screen");
+                startActivity(intent);
+                break;
+            case R.id.actionLivingRoom:
+                intent = new Intent(HSOutsideTempActivity.this, LivingRoomActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.actionHouseSetting:
+                Toast.makeText(HSOutsideTempActivity.this, "You are already here !!!", Toast.LENGTH_LONG).show();
+                break;
+            case R.id.About:
+                Snackbar.make(findViewById(android.R.id.content),R.string.about, Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                break;
+            case R.id.Help:
+                intent = new Intent(HSOutsideTempActivity.this, HSHelpActivity.class);
+                startActivity(intent);
+                break;
+        }
+        return true;
     }
 
     @Override

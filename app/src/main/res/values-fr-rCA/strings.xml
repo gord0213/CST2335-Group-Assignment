@@ -6,6 +6,7 @@
     <string name="title_activity_hsgarage">Garage</string>
     <string name="title_activity_hshouse_temp">House Temperature</string>
     <string name="title_activity_hsoutside_temp">Outside Temperature</string>
+    <string name="title_activity_hshelp">House Settings Help</string>
     <string name="about">Version 1.0, By Michael Gordanier and Jeff McNally</string>
     <string name="title_activity_living_room">LivingRoomActivity</string>
     <string name="title_name">CST2335 Group Assignment</string>
@@ -15,4 +16,10 @@
         <item>House Temperature</item>
         <item>Outside Weather</item>
     </string-array>
+    <string name="gs_status">Garage Door Status</string>
+    <string name="gs_open">Open</string>
+    <string name="gs_closed">Closed</string>
+    <string name="gs_light">Garage Light</string>
+    <string name="gs_btnOpenClose">Open/Close</string>
+    <string name="ht_schedule_temp">Schedule Temperature</string>
 </resources>
