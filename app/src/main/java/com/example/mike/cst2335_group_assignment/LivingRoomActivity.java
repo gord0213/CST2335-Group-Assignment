@@ -17,7 +17,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 public class LivingRoomActivity extends AppCompatActivity {
-    private static final String ACTIVITY_NAME = "Living Room Activity";
+    private static final String ACTIVITY_NAME = "LivingRoomActivity";
     ListView mainMenuView;
     String[] menuList;
     Intent intent;
@@ -63,10 +63,17 @@ public class LivingRoomActivity extends AppCompatActivity {
             }
 
         });
+        FloatingActionButton fabBack = (FloatingActionButton) findViewById(R.id.fabBack);
+        fabBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     public boolean onCreateOptionsMenu(Menu m) {
-        getMenuInflater().inflate(R.menu.menu_transition, m);
+        getMenuInflater().inflate(R.menu.menu_house_settings, m);
         return true;
     }
     public boolean onOptionsItemSelected(MenuItem mi){
@@ -87,6 +94,10 @@ public class LivingRoomActivity extends AppCompatActivity {
                 break;
             case R.id.About:
                 Snackbar.make(findViewById(android.R.id.content), R.string.about, Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                break;
+            case R.id.Help:
+                intent = new Intent(LivingRoomActivity.this, LRHelpActivity.class);
+                startActivity(intent);
                 break;
         }
         return true;

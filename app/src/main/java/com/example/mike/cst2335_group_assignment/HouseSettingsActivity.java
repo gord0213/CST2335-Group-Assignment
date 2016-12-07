@@ -56,6 +56,10 @@ public class HouseSettingsActivity extends AppCompatActivity {
                     Intent intent = new Intent(HouseSettingsActivity.this, HSOutsideTempActivity.class);
                     Log.i(ACTIVITY_NAME, "Going to Outside Weather Info");
                     startActivityForResult(intent, 5);
+                }else if(menuList[position].equals("Help")) {
+                    Intent intent = new Intent(HouseSettingsActivity.this, HSHelpActivity.class);
+                    Log.i(ACTIVITY_NAME, "Going to Help Activity");
+                    startActivity(intent);
                 }
 
             }

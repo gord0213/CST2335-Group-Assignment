@@ -11,6 +11,8 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -24,7 +26,7 @@ import com.example.mike.cst2335_group_assignment.Database.Helper;
 import java.util.ArrayList;
 
 public class TelevisionActivity extends AppCompatActivity {
-    private static final String ACTIVITY_NAME = "Television activity ";
+    private static final String ACTIVITY_NAME = "TelevisionActivity ";
     private ImageButton enterButton;
     private ImageButton leftArrow;
     private ImageButton rightArrow;
@@ -182,6 +184,13 @@ public class TelevisionActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        FloatingActionButton fabBack = (FloatingActionButton) findViewById(R.id.fabBack);
+        fabBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
     
     
@@ -198,7 +207,38 @@ public class TelevisionActivity extends AppCompatActivity {
         tvOnOff     = (TextView)    findViewById(R.id.TvOnOFf);
         helper      = new Helper(this);
     }
-    
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_house_settings, menu);
+        return true;
+    }
+    public boolean onOptionsItemSelected(MenuItem mi){
+        int id = mi.getItemId();
+        Intent intent;
+        switch (id){
+            case R.id.actionHome:
+                intent = new Intent(TelevisionActivity.this, HomeScreen.class);
+                Log.i(ACTIVITY_NAME, "Going to Home Screen");
+                startActivity(intent);
+                break;
+            case R.id.actionLivingRoom:
+                Toast.makeText(TelevisionActivity.this, "You are already here !!!", Toast.LENGTH_LONG).show();
+                break;
+            case R.id.actionHouseSetting:
+                intent = new Intent(TelevisionActivity.this, HouseSettingsActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.About:
+                Snackbar.make(findViewById(android.R.id.content),R.string.about, Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                break;
+            case R.id.Help:
+                intent = new Intent(TelevisionActivity.this, LRHelpActivity.class);
+                startActivity(intent);
+                break;
+        }
+        return true;
+    }
     @Override
     protected void onResume(){
         super.onResume();

@@ -112,4 +112,12 @@
         android:layout_toEndOf="@+id/channelNumber"
         android:layout_marginBottom="37dp" />
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:srcCompat="@android:drawable/ic_menu_revert"
+        app:backgroundTint="?attr/actionModeSplitBackground" />
+
 </RelativeLayout>

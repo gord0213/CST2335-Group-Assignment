@@ -15,6 +15,7 @@
         <item>Garage</item>
         <item>House Temperature</item>
         <item>Outside Weather</item>
+        <item>Help</item>
     </string-array>
     <string name="gs_status">Garage Door Status</string>
     <string name="gs_open">Open</string>
