@@ -33,6 +33,8 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+//Activity for viewing the weather outside-
+
 public class HSOutsideTempActivity extends AppCompatActivity {
     protected static final String ACTIVITY_NAME = "HSOutsideTempActivity";
     private ProgressBar progress;

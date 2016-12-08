@@ -17,6 +17,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+//Activity for controlling garage functions
 public class HSGarageActivity extends AppCompatActivity {
     protected static final String ACTIVITY_NAME = "HSGarageActivity";
 

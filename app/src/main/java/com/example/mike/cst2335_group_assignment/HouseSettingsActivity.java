@@ -16,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
+//Main screen for Home Settings. Allows access to Garage, Home Temp, and Outside Weather
 
 public class HouseSettingsActivity extends AppCompatActivity {
     private static final String ACTIVITY_NAME = "HouseSettingsActivity";

@@ -38,4 +38,6 @@
     <string name="title_activity_blinds">BlindsActivity</string>
     <string name="Ok"> Yes I would   </string>
     <string name="No"> No I wouldn\'t </string>
+    <string name="tvon">TV is on</string>
+    <string name="tvoff">TV is off</string>
 </resources>

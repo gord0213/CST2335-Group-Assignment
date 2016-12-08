@@ -53,7 +53,7 @@ public class TelevisionActivity extends AppCompatActivity {
         final SharedPreferences.Editor editor = prefs.edit();
         final int favChannelText = prefs.getInt("FavChannel", 000);
         channel.setText(String.valueOf(favChannelText));
-
+        tvOnOff.setText(prefs.getString("tvOnoff", "Tv is off"));
         downArrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -96,35 +96,18 @@ public class TelevisionActivity extends AppCompatActivity {
                 Toast.makeText(TelevisionActivity.this, "Your volumn is now set to " + TVVolumn, Toast.LENGTH_SHORT).show();
             }
         });
-        buttonOnOff.setOnClickListener(new View.OnClickListener() {
-            int clicked = 0;
-            @Override
-            public void onClick(View v) {
-
-                if (clicked++ % 2 == 0) {
-                    Toast.makeText(TelevisionActivity.this, "You put TV to sleep", Toast.LENGTH_SHORT).show();
-
-                }
-                else {
-                    Toast.makeText(TelevisionActivity.this, "You woke the TV up", Toast.LENGTH_SHORT).show();
-
-                }
-            }
-        });
         buttonOnOff.setOnLongClickListener(new View.OnLongClickListener() {
             int longClicked =0;
             @Override
             public boolean onLongClick(View v) {
 
                 if (longClicked++ % 2 == 0) {
-                    Toast.makeText(TelevisionActivity.this, "You shut tv off", Toast.LENGTH_SHORT).show();
-                    tvOnOff.setText("Tv is OFF");
-
+                    tvOnOff.setText(R.string.tvon);
                 }else{
-                    Toast.makeText(TelevisionActivity.this, "You turned the TV back on", Toast.LENGTH_SHORT).show();
-                    tvOnOff.setText("TV is ON");
-
+                    tvOnOff.setText(R.string.tvoff);
                 }
+                editor.putString("tvOnoff", tvOnOff.getText().toString());
+                editor.commit();
                 return false;
             }
         });

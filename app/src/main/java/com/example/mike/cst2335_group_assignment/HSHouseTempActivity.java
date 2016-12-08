@@ -27,6 +27,7 @@ import java.util.ArrayList;
 
 import static java.lang.Integer.valueOf;
 
+//Activity for controlling and scheduling the temperature in the house.
 public class HSHouseTempActivity extends AppCompatActivity {
     protected static final String ACTIVITY_NAME = "HSHouseTempActivity";
     public int houseTemp;
